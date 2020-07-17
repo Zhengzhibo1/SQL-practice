@@ -26,5 +26,5 @@ WHERE s1.salary = (SELECT Max(s2.salary)
               ON d2.emp_no = s2.emp_no
               AND d2.to_date = '9999-01-01'
               AND s2.to_date = '9999-01-01'
-              AND d2.dept_no = d1.dept_no)
+              AND d2.dept_no = d1.dept_no) /*最后这一句，相当于子查询的时候关联到外查询的dept_no，相当于在一个部门内部查询最高薪水*/
 ORDER BY d1.dept_no
