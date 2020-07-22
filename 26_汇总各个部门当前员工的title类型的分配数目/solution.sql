@@ -43,4 +43,4 @@ WHERE d.dept_no = de.dept_no
 AND de.emp_no = t.emp_no
 AND de.to_date = '9999-01-01'
 AND t.to_date = '9999-01-01'
-GROUP BY d.dept_no,t.title
+GROUP BY d.dept_no,t.title;
