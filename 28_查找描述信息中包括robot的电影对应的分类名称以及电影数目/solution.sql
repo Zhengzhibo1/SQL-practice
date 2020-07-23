@@ -20,19 +20,6 @@ category_id  tinyint(3)  NOT NULL, `last_update` timestamp);
 
 /*方法1 先查出film_category分类下电影数大于5部的分类电影表，然后多表联查*/
 SELECT c.name, COUNT(f.film_id)
-FROM category AS c, film_category AS fc, film AS f
-WHERE f.description LIKE '%robot%'
-AND c.category_id = fc.category_id
-AND fc.film_id = f.film_id
-AND c.category_id IN (SELECT category_id
-                      FROM film_category
-                      GROUP BY category_id
-                      HAVING COUNT(film_id) >= 5
-                     )
-GROUP BY c.category_id;
-
-/*方法2 将方法1中的子查询放到WHERE语句中*/
-SELECT c.name, COUNT(f.film_id)
 FROM category AS c, film_category AS fc, film AS f,
 (SELECT category_id
  FROM film_category
@@ -43,4 +30,17 @@ WHERE f.description LIKE '%robot%'
 AND c.category_id = fc.category_id
 AND fc.film_id = f.film_id
 AND c.category_id = c5.category_id
+GROUP BY c.category_id;
+
+/*方法2 将方法1中的子查询放到WHERE语句中*/
+SELECT c.name, COUNT(f.film_id)
+FROM category AS c, film_category AS fc, film AS f
+WHERE f.description LIKE '%robot%'
+AND c.category_id = fc.category_id
+AND fc.film_id = f.film_id
+AND c.category_id IN (SELECT category_id
+                      FROM film_category
+                      GROUP BY category_id
+                      HAVING COUNT(film_id) >= 5
+                     )
 GROUP BY c.category_id;
