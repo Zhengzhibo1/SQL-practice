@@ -14,6 +14,6 @@ last_name  	varchar(45)	 not null	   姓氏
 CREATE TABLE actor_name AS
 SELECT first_name, last_name FROM actor
 
-/*方法2 mysql 区别 无AS*/
+/*方法2 mysql 区别 AS可有可无*/
 CREATE TABLE actor_name 
 SELECT first_name, last_name FROM actor
