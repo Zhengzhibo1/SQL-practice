@@ -7,7 +7,7 @@ last_name varchar(45) NOT NULL,
 last_update timestamp NOT NULL DEFAULT (datetime('now','localtime')))
 
 actor_id	first_name	last_name	   last_update
-1	        PENELOPE	  GUINESS	     2006-02-15 12:34:33
+1	        PENELOPE	  GUINESS	   2006-02-15 12:34:33
 2	        NICK	      WAHLBERG	   2006-02-15 12:34:33
 */
 
